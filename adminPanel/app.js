@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, doc, onSnapshot, query } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
 
 const firebaseConfig = {
@@ -22,6 +22,7 @@ window.onload = () => {
         if (!user) {
             location = "../index.html";
         } else {
+            showAllClassDetails();
         }
     });
 }
@@ -100,7 +101,7 @@ const studentDataSubmit = async () => {
     flag ? closingModal('createStudentComp') : false;
 
     const gettingImgSrc = await getImgIntoURL(inputList[5].files);
-    console.log(gettingImgSrc);
+
     if (flag) {
         (async () => {
             await addDoc(collection(db, "students"), {
@@ -165,6 +166,39 @@ const getImgIntoURL = (file) => {
     })
 }
 
+
+const showAllClassDetails = () => {
+    const table_data = document.getElementById("table-data");
+
+    const q = query(collection(db, "classes"));
+    onSnapshot(q, (querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // batchNumber
+            // "a"
+            //     (string)
+            // classTiming
+            // "a"
+            // courseName
+            // "a"
+            // scheduleOfClasses
+            // "a"
+            // sectionName
+            // "a"
+            // teacherName
+            // "a"
+            table_data.innerHTML += `
+            <tr>
+                <td>${doc.data().batchNumber}</td>
+                <td>${doc.data().classTiming}</td>
+                <td>${doc.data().courseName}</td>
+                <td>${doc.data().scheduleOfClasses}</td>
+                <td>${doc.data().sectionName}</td>
+                <td>${doc.data().teacherName}</td>
+            </tr>
+            `
+        });
+    });
+}
 
 
 window.closingModal = closingModal;

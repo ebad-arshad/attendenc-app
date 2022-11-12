@@ -8,6 +8,7 @@
     <title>Admin Panel</title>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.css">
     <script src="https://kit.fontawesome.com/c42ed3031b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -29,29 +30,59 @@
 
     <div class="line"></div>
 
-    <div class="container">
+    <div class="containers">
         <div class="toggleButtons">
             <button>Class details</button>
             <button>Student details</button>
             <button>Student Statistics</button>
         </div>
-        <div class="hero hidden">
+        <div class="hero">
+
+            <div class="detailsOfClass">
+                <table class="table table-striped">
+                    <thead id="tableHead" class="thead-own">
+                        <tr>
+                            <th scope="col">Batch Number</th>
+                            <th scope="col">Class Timing</th>
+                            <th scope="col">Course Name</th>
+                            <th scope="col">Schedule of Classes</th>
+                            <th scope="col">Section Name</th>
+                            <th scope="col">Teacher Name</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-data">
+                        <!-- <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="detailsOfStudent"></div>
+            <div class="statisticsOfStudents"></div>
+
         </div>
     </div>
+
+
+
+
+
+
+
+
+
 
     <div class="createClassComp hidden">
         <div class="closeBtn"><i onclick="closingModal('createClassComp')" class="fa-solid fa-xmark"></i></div>
         <div class="classCreateForm">
-            <!-- 
-                o Class timings
-                o Schedule of classes
-                o Teacher’s name
-                o Section name.
-                o Course Name
-                o Batch Number
-             -->
             <div class="formComp">
-                <div class="row">
+                <div class="rows">
 
                     <div>
                         <label for="inp1">Class timing</label>
@@ -79,7 +110,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
+                <div class="rows">
                     <div>
                         <label for="inp3">Teacher's name</label>
                         <br>
@@ -105,7 +136,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
+                <div class="rows">
                     <div>
                         <label for="inp5">Course Name</label>
                         <br>
@@ -140,18 +171,8 @@
     <div class="createStudentComp hidden">
         <div class="closeBtn"><i onclick="closingModal('createStudentComp')" class="fa-solid fa-xmark"></i></div>
         <div class="studentCreateForm">
-            <!-- 
-               o Name
-                o Father Name
-                o Roll Number
-                o Contact Number
-                o CNIC number
-                o Picture.
-                o Course Name
-                o Admin will assign a class to every student.
-             -->
             <div class="formComp">
-                <div class="row">
+                <div class="rows">
 
                     <div>
                         <label for="studentName">Name</label>
@@ -165,7 +186,7 @@
                         <input placeholder="Father Name" type="text" id="studentFatherName">
                     </div>
                 </div>
-                <div class="row">
+                <div class="rows">
                     <div>
                         <label for="studentRollNumber">Roll Number</label>
                         <br>
@@ -177,7 +198,7 @@
                         <input placeholder="Contact Number" type="text" id="studentContactNumber">
                     </div>
                 </div>
-                <div class="row">
+                <div class="rows">
                     <div>
                         <label for="studentCNICNumber">CNIC number</label>
                         <br>
@@ -189,7 +210,7 @@
                         <input type="file" accept="image/*" id="studentPicture">
                     </div>
                 </div>
-                <div class="row">
+                <div class="rows">
                     <div>
                         <label for="studentCourseName">Course Name</label>
                         <br>

@@ -47,6 +47,12 @@ nav {
     transition: .2s;
 }
 
+.createButtons button,
+.toggleButtons button {
+    width: 170px;
+}
+
+
 .createButtons button:hover,
 .logOutBtn button:hover,
 .toggleButtons button:hover {
@@ -61,7 +67,7 @@ nav {
     margin: 30px auto;
 }
 
-.container {
+.containers {
     width: 90%;
     margin: 0 auto 0 auto;
 }
@@ -85,9 +91,14 @@ nav {
 }
 
 .hero {
-    margin-top: 20px;
+    margin: 20px 0;
     border: 1px solid #0066b3;
     border-radius: 2px;
+}
+
+.detailsOfClass {
+    height: 400px;
+    overflow-y: scroll;
 }
 
 .hidden {
@@ -126,25 +137,25 @@ nav {
     width: 70%;
 }
 
-.row {
+.rows {
     display: flex;
     width: 100%;
     justify-content: space-between;
     margin-top: 10px;
 }
 
-.row div {
+.rows div {
     display: flex;
     flex-direction: column;
     width: 100%;
     color: #0066b3;
 }
 
-.row div:nth-child(2) {
+.rows div:nth-child(2) {
     align-items: flex-end;
 }
 
-.row div input {
+.rows div input {
     width: 80%;
     border: 1px solid #8dc63f;
     outline: none;
@@ -162,8 +173,8 @@ select {
 }
 
 
-.row div input:focus,
-.row div input:hover {
+.rows div input:focus,
+.rows div input:hover {
     border: 1px solid #0066b3;
     transition: .2s;
 }
@@ -195,6 +206,11 @@ select {
     color: #0066b3;
     font-size: 40px;
     cursor: pointer;
+}
+
+#tableHead {
+    background-color: #0066b3 !important;
+    color: #fff;
 }
 
 
