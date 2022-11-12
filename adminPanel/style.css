@@ -28,7 +28,15 @@ nav {
     object-fit: contain;
 }
 
-.createButtons button,.logOutBtn button {
+.createButtons {
+    display: flex;
+    gap: 10px;
+    width: fit-content;
+    margin: 30px auto 30px auto;
+}
+
+.createButtons button,
+.logOutBtn button {
     padding: 10px 15px;
     color: #fff;
     background: #0066b3;
@@ -39,7 +47,168 @@ nav {
     transition: .2s;
 }
 
-.createButtons button:hover,.logOutBtn button:hover {
+.createButtons button:hover,
+.logOutBtn button:hover,
+.toggleButtons button:hover {
     opacity: .7;
     transition: .2s;
+}
+
+.line {
+    height: 2px;
+    background: #8dc63f;
+    width: 90%;
+    margin: 30px auto;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto 0 auto;
+}
+
+.toggleButtons {
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+}
+
+.toggleButtons button {
+    padding: 10px 15px;
+    color: #fff;
+    background: #0066b3;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.hero {
+    margin-top: 20px;
+    border: 1px solid #0066b3;
+    border-radius: 2px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.createClassComp,
+.createStudentComp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .2);
+    width: 100%;
+    height: 100vh;
+    padding: 100px 50px;
+    display: flex;
+    align-items: center;
+}
+
+.classCreateForm,
+.studentCreateForm {
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.classCreateForm label,
+.studentCreateForm label {
+    cursor: pointer;
+}
+
+.formComp {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.row div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: #0066b3;
+}
+
+.row div:nth-child(2) {
+    align-items: flex-end;
+}
+
+.row div input {
+    width: 80%;
+    border: 1px solid #8dc63f;
+    outline: none;
+    transition: .2s;
+    padding: 15px;
+    cursor: pointer;
+}
+
+select {
+    width: 80%;
+    border: 1px solid #8dc63f;
+    outline: none;
+    transition: .2s;
+    padding: 15px;
+}
+
+
+.row div input:focus,
+.row div input:hover {
+    border: 1px solid #0066b3;
+    transition: .2s;
+}
+
+.submitBtn {
+    width: 100%;
+    margin-top: 100px;
+}
+
+.submitBtn button {
+    width: inherit;
+    background: #0066b3;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.submitBtn button:hover {
+    opacity: .6;
+    transition: .2s;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 42px;
+    right: 50px;
+    color: #0066b3;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+
+/* Swal */
+
+.swal-icon {
+    border-color: #0066b3;
+}
+
+.swal-icon--error__line {
+    background: #0066b3;
+
+}
+
+.swal-button {
+    background: #0066b3 !important;
 }

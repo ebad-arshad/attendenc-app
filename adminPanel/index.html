@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c42ed3031b.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -14,16 +16,213 @@
         <div class="logo">
             <img src="../images/saylani-logo.png" alt="">
         </div>
-        <div class="createButtons">
-            <button id="createClassBtn">Create new class</button>
-            <button id="createStudentBtn">Create new student</button>
-        </div>
+
         <div class="logOutBtn">
-            <button>Log Out</button>
+            <button onclick="logOut()">Log Out</button>
         </div>
     </nav>
 
+    <div class="createButtons">
+        <button id="createClassBtn">Create new class</button>
+        <button id="createStudentBtn">Create new student</button>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="container">
+        <div class="toggleButtons">
+            <button>Class details</button>
+            <button>Student details</button>
+            <button>Student Statistics</button>
+        </div>
+        <div class="hero hidden">
+        </div>
+    </div>
+
+    <div class="createClassComp hidden">
+        <div class="closeBtn"><i onclick="closingModal('createClassComp')" class="fa-solid fa-xmark"></i></div>
+        <div class="classCreateForm">
+            <!-- 
+                o Class timings
+                o Schedule of classes
+                o Teacher’s name
+                o Section name.
+                o Course Name
+                o Batch Number
+             -->
+            <div class="formComp">
+                <div class="row">
+
+                    <div>
+                        <label for="inp1">Class timing</label>
+                        <br>
+                        <select>
+                            <option value="select">Class timing</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="inp2">Schedule of class</label>
+                        <br>
+                        <select>
+                            <option value="select">Schedule of class</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <label for="inp3">Teacher's name</label>
+                        <br>
+                        <select>
+                            <option value="select">Teacher's name</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="inp4">Section Name</label>
+                        <br>
+                        <select>
+                            <option value="select">Section Name</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <label for="inp5">Course Name</label>
+                        <br>
+                        <select>
+                            <option value="select">Course Name</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="inp6">Batch Number</label>
+                        <br>
+                        <select>
+                            <option value="select">Batch Number</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="submitBtn">
+                    <button onclick="classDataSubmit()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="createStudentComp hidden">
+        <div class="closeBtn"><i onclick="closingModal('createStudentComp')" class="fa-solid fa-xmark"></i></div>
+        <div class="studentCreateForm">
+            <!-- 
+               o Name
+                o Father Name
+                o Roll Number
+                o Contact Number
+                o CNIC number
+                o Picture.
+                o Course Name
+                o Admin will assign a class to every student.
+             -->
+            <div class="formComp">
+                <div class="row">
+
+                    <div>
+                        <label for="studentName">Name</label>
+                        <br>
+                        <input placeholder="Name" type="text" id="studentName">
+                    </div>
+
+                    <div>
+                        <label for="studentFatherName">Father Name</label>
+                        <br>
+                        <input placeholder="Father Name" type="text" id="studentFatherName">
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <label for="studentRollNumber">Roll Number</label>
+                        <br>
+                        <input placeholder="Roll Number" type="text" id="studentRollNumber">
+                    </div>
+                    <div>
+                        <label for="studentContactNumber">Contact Number</label>
+                        <br>
+                        <input placeholder="Contact Number" type="text" id="studentContactNumber">
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <label for="studentCNICNumber">CNIC number</label>
+                        <br>
+                        <input placeholder="CNIC number" type="text" id="studentCNICNumber">
+                    </div>
+                    <div>
+                        <label for="studentPicture">Picture</label>
+                        <br>
+                        <input type="file" accept="image/*" id="studentPicture">
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <label for="studentCourseName">Course Name</label>
+                        <br>
+                        <select>
+                            <option value="select">Course Name</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="studentSectionName">Section</label>
+                        <br>
+                        <select>
+                            <option value="select">Section</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                            <option value="a">a</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="submitBtn">
+                    <button onclick="studentDataSubmit()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
-<script src="app.js"></script>
+<script type="module" src="app.js"></script>
 
 </html>

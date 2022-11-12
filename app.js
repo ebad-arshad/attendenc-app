@@ -30,22 +30,24 @@ const password = document.getElementById("password");
 const loginBtn = () => {
     event.preventDefault();
 
-    signInWithEmailAndPassword(auth, email.value, password.value)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            location = "adminPanel/index.html";
-            // ...
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // ..
-            console.log(errorMessage);
-            errorMessage === "Firebase: Error (auth/invalid-email)." ? swal("User not Found", "Please input correct email", "error") : swal("Password is Incorrect", "Please input correct password", "error");
-            // swal("User / Password Wrong", , "success");
-        });
+    const regexForEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const regexForPassword = /^(?=.*\d{1})(?=.*[a-z]{1})(?=.*[A-Z]{1})(?=.*[!@#$%^&*{|}?~_=+.-]{1})(?=.*[^a-zA-Z0-9])(?!.*\s).{6,20}$/;
+    if (regexForEmail.test(email.value)) {
+        if (regexForPassword.test(password.value)) {
 
+            signInWithEmailAndPassword(auth, email.value, password.value)
+                .then((userCredential) => {
+                    location = "adminPanel/index.html";
+                })
+                .catch((error) => {
+                    error.message === "Firebase: Error (auth/invalid-email)." ? swal("User not Found", "Please input correct email", "error") : swal("Password is Incorrect", "Please input correct password", "error");
+                });
+        } else {
+            swal("Password is Incorrect", "Please input correct password", "error")
+        }
+    } else {
+        swal("User not Found", "Please input correct email", "error")
+    }
 }
 
 window.loginBtn = loginBtn;
