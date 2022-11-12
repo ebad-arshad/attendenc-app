@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, doc, onSnapshot, query } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, doc, onSnapshot, query, getDocs, where } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
 
 const firebaseConfig = {
@@ -26,6 +26,8 @@ window.onload = () => {
         }
     });
 }
+
+let id = "";
 
 // Log Out function
 
@@ -100,7 +102,7 @@ const studentDataSubmit = async () => {
 
     flag ? closingModal('createStudentComp') : false;
 
-    const gettingImgSrc = await getImgIntoURL(inputList[5].files);
+    const gettingImgSrc = await getImgIntoURL(inputList[5].files[0]);
 
     if (flag) {
         (async () => {
@@ -173,19 +175,6 @@ const showAllClassDetails = () => {
     const q = query(collection(db, "classes"));
     onSnapshot(q, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            // batchNumber
-            // "a"
-            //     (string)
-            // classTiming
-            // "a"
-            // courseName
-            // "a"
-            // scheduleOfClasses
-            // "a"
-            // sectionName
-            // "a"
-            // teacherName
-            // "a"
             table_data.innerHTML += `
             <tr>
                 <td>${doc.data().batchNumber}</td>
@@ -194,14 +183,68 @@ const showAllClassDetails = () => {
                 <td>${doc.data().scheduleOfClasses}</td>
                 <td>${doc.data().sectionName}</td>
                 <td>${doc.data().teacherName}</td>
+                <th><button onclick="openAttendanceModal('${doc.id}','${doc.data().classTiming}')" class="attendanceBtn">Attendance</button></th>
             </tr>
             `
         });
     });
 }
 
+const showIdCard = async () => {
+    const rollNumberInput = document.getElementById("rollNumberInput");
+    const dummyImage = document.getElementsByClassName("dummyImage")[0];
+    const q = query(collection(db, "students"), where("rollNumber", "==", rollNumberInput.value));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        dummyImage.innerHTML = `
+        <div class="box">
+        <div class="head">SMIT</div>
+        <div class="line"></div>
+        <div class="picture">
+            <img src="${doc.data().picture}"
+                alt="Picture">
+        </div>
+        <div class="name">${doc.data().studentName}</div>
+        <div class="rollNumber">${doc.data().rollNumber}</div>
+        <div class="courseName">${doc.data().courseName}</div>
+    </div>
+        `
+    });
+    rollNumberInput.value = '';
+}
 
+
+const openAttendanceModal = (uid, time) => {
+    const AttendanceModal = document.getElementsByClassName("AttendanceModal")[0];
+    AttendanceModal.classList.remove("hidden")
+    id = [uid, time];
+}
+
+
+
+
+
+
+
+
+const markAttendance = () => {
+    const attendanceSelected = document.querySelector(".attendanceBar select");
+    const markedValue = attendanceSelected[attendanceSelected.selectedIndex].value;
+    if (markedValue === "present") {
+        if ((new Date().getMinutes() - id[1].slice(id[1].indexOf('-') + 2, id[1].indexOf('-') + 4)) <= 10) {
+            // attendance mark as absent
+            console.log(id[1].slice(id[1].indexOf('-') + 2, id[1].indexOf('-') + 4));
+        }
+    }
+}
+
+
+
+
+window.markAttendance = markAttendance;
 window.closingModal = closingModal;
 window.logOut = logOut;
 window.classDataSubmit = classDataSubmit;
 window.studentDataSubmit = studentDataSubmit;
+window.showIdCard = showIdCard;
+window.openAttendanceModal = openAttendanceModal;

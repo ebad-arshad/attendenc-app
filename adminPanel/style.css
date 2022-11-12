@@ -106,7 +106,8 @@ nav {
 }
 
 .createClassComp,
-.createStudentComp {
+.createStudentComp,
+.AttendanceModal {
     position: fixed;
     top: 0;
     left: 0;
@@ -124,6 +125,15 @@ nav {
     height: calc(100vh - 100px);
     background-color: #fff;
     display: flex;
+    align-items: center;
+}
+
+.AttendanceModal>div {
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -201,9 +211,11 @@ select {
 
 .closeBtn {
     position: absolute;
-    top: 42px;
+    top: 50px;
     right: 50px;
-    color: #0066b3;
+    background: #0066b3;
+    padding: 0 10px;
+    color: #fff;
     font-size: 40px;
     cursor: pointer;
 }
@@ -212,6 +224,156 @@ select {
     background-color: #0066b3 !important;
     color: #fff;
 }
+
+.attendanceBtn {
+    padding: 4px 8px;
+    background: #0066b3;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.attendanceBtn:hover {
+    opacity: .7;
+    transition: .2s;
+}
+
+.searchBar {
+    margin-top: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchBar input {
+    padding: 16px 30px 16px 10px;
+    border: 1px solid #0066b3;
+    border-radius: 2px;
+    outline: none;
+    width: 90%;
+    transition: .2s;
+}
+
+.searchBar input:hover,
+.searchBar input:focus,
+.searchBar input:active {
+    border: 1px solid #8dc63f;
+    transition: .2s;
+}
+
+
+.searchBar input:hover~i,
+.searchBar input:active~i,
+.searchBar input:focus~i {
+    color: #8dc63f;
+    transition: .2s;
+}
+
+.searchBar i {
+    transition: .2s;
+
+}
+
+
+.attendanceBar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 5px;
+}
+
+.attendanceBar select {
+    border: 1px solid #0066b3;
+
+}
+
+.attendanceBar button {
+    padding: 0 20px;
+    background: #0066b3;
+    border: none;
+    color: #fff;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.attendanceBar button:hover {
+    opacity: .8;
+    transition: .2s;
+}
+
+.searchBar i {
+    color: #0066b3;
+    margin-left: -26px;
+    cursor: pointer;
+}
+
+.dummyImage {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    width: 300px;
+    height: 350px;
+    border: 1px solid #0066b3;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box .line {
+    background: #0066b3 !important;
+    margin: 10px 0 !important;
+}
+
+.head {
+    color: #0066b3;
+    font-weight: bold;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    font-size: 20px;
+}
+
+.picture {
+    width: 70%;
+    border: 1px solid #0066b3;
+}
+
+.picture img {
+    width: 100%;
+}
+
+.name {
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.rollNumber {
+    color: #0066b3;
+    border: 1px solid #0066b3;
+    padding: 10px;
+}
+
+.courseName {
+    background: #0066b3;
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+
+
 
 
 /* Swal */
