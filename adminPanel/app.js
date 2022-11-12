@@ -170,9 +170,10 @@ const getImgIntoURL = (file) => {
 
 
 const showAllClassDetails = () => {
-    const table_data = document.getElementById("table-data");
+    const table_data = document.getElementsByClassName("table-data")[0];
 
     const q = query(collection(db, "classes"));
+    table_data.innerHTML = '';
     onSnapshot(q, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
             table_data.innerHTML += `
@@ -184,6 +185,28 @@ const showAllClassDetails = () => {
                 <td>${doc.data().sectionName}</td>
                 <td>${doc.data().teacherName}</td>
                 <th><button onclick="openAttendanceModal('${doc.id}','${doc.data().classTiming}')" class="attendanceBtn">Attendance</button></th>
+            </tr>
+            `
+        });
+    });
+}
+
+const showAllStudentDetails = () => {
+    const table_data = document.getElementsByClassName("table-data")[1];
+
+    const q = query(collection(db, "students"));
+    table_data.innerHTML = '';
+    onSnapshot(q, (querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            table_data.innerHTML += `
+            <tr>
+                <td>${doc.data().studentName}</td>
+                <td>${doc.data().fathernName}</td>
+                <td>${doc.data().rollNumber}</td>
+                <td>${doc.data().contactNumber}</td>
+                <td>${doc.data().cnicNumber}</td>
+                <td>${doc.data().courseName}</td>
+                <td>${doc.data().sectionName}</td>
             </tr>
             `
         });
@@ -235,12 +258,43 @@ const markAttendance = () => {
             // attendance mark as absent
             console.log(id[1].slice(id[1].indexOf('-') + 2, id[1].indexOf('-') + 4));
         }
+        else {
+
+        }
     }
 }
 
 
 
 
+
+
+
+
+const toggleTableData = (index) => {
+    const hero = document.querySelectorAll(".hero div");
+    hero.forEach((elem, index) => {
+        elem.classList.add("hidden");
+    })
+    hero[index].classList.remove("hidden");
+    if (index == '0') {
+        showAllClassDetails()
+    } else if (index == '1') {
+        showAllStudentDetails()
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+window.toggleTableData = toggleTableData;
 window.markAttendance = markAttendance;
 window.closingModal = closingModal;
 window.logOut = logOut;

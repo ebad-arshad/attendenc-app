@@ -32,9 +32,9 @@
 
     <div class="containers">
         <div class="toggleButtons">
-            <button>Class details</button>
-            <button>Student details</button>
-            <button>Student Statistics</button>
+            <button onclick="toggleTableData('0')">Class details</button>
+            <button onclick="toggleTableData('1')">Student details</button>
+            <button onclick="toggleTableData('2')">Student Statistics</button>
         </div>
         <div class="hero">
 
@@ -51,58 +51,74 @@
                             <th scope="col">Attendance</th>
                         </tr>
                     </thead>
-                    <tbody id="table-data">
+                    <tbody class="table-data">
                     </tbody>
                 </table>
             </div>
-            <div class="detailsOfStudent"></div>
-            <div class="statisticsOfStudents"></div>
+            <div class="detailsOfStudent hidden">
+                <table class="table table-striped">
+                    <thead id="tableHead" class="thead-own">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Father Name</th>
+                            <th scope="col">Roll Number</th>
+                            <th scope="col">Contact Number</th>
+                            <th scope="col">CNIC number</th>
+                            <th scope="col">Course Name</th>
+                            <th scope="col">Section</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-data">
+                    </tbody>
+                </table>
+            </div>
+            <div class="statisticsOfStudents hidden"></div>
+
+        </div>
 
 
 
 
-
-            <div class="AttendanceModal">
-                <div>
-                    <div class="closeBtn"><i onclick="closingModal('AttendanceModal')" class="fa-solid fa-xmark"></i>
+        <div class="AttendanceModal hidden">
+            <div>
+                <div class="closeBtn"><i onclick="closingModal('AttendanceModal')" class="fa-solid fa-xmark"></i>
+                </div>
+                <div style="width: 100%;">
+                    <div class="searchBar">
+                        <input id="rollNumberInput" placeholder="Search roll number" type="text">
+                        <i onclick="showIdCard()" class="fa-solid fa-magnifying-glass"></i>
                     </div>
-                    <div style="width: 100%;">
-                        <div class="searchBar">
-                            <input id="rollNumberInput" placeholder="Search roll number" type="text">
-                            <i onclick="showIdCard()" class="fa-solid fa-magnifying-glass"></i>
-                        </div>
-                        <div class="attendanceBar">
-                            <select>
-                                <option selected value="present">Present</option>
-                                <option value="absent">Absent</option>
-                                <option value="late">Late</option>
-                                <option value="leave">Leave</option>
-                            </select>
-                            <button onclick="markAttendance()">Mark</button>
-                        </div>
-                        <div class="dummyImage ">
-                            <div class="box">
-                                <div class="head">SMIT</div>
-                                <div class="line"></div>
-                                <div class="picture">
-                                    <img src="../images/audi.png" alt="">
-                                </div>
-                                <div class="name">Student Name</div>
-                                <div class="rollNumber">KH00000000000</div>
-                                <div class="courseName">Course Name</div>
+                    <div class="attendanceBar">
+                        <select>
+                            <option value="present">Present</option>
+                            <option value="absent">Absent</option>
+                            <option value="late">Late</option>
+                            <option value="leave">Leave</option>
+                        </select>
+                        <button onclick="markAttendance()">Mark</button>
+                    </div>
+                    <div class="dummyImage ">
+                        <div class="box">
+                            <div class="head">SMIT</div>
+                            <div class="line"></div>
+                            <div class="picture">
+                                <img src="../images/audi.png" alt="">
                             </div>
+                            <div class="name">Student Name</div>
+                            <div class="rollNumber">KH00000000000</div>
+                            <div class="courseName">Course Name</div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
         </div>
+
+
+
+
+
+
+
     </div>
 
 

@@ -96,7 +96,9 @@ nav {
     border-radius: 2px;
 }
 
-.detailsOfClass {
+.detailsOfClass,
+.statisticsOfStudents,
+.detailsOfStudent {
     height: 400px;
     overflow-y: scroll;
 }
