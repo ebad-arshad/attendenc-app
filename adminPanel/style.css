@@ -1,0 +1,45 @@
+@font-face {
+    font-family: Ubuntu;
+    src: url(../fonts/Ubuntu/Ubuntu-Light.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Ubuntu;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.logo {
+    width: 160px;
+    cursor: pointer;
+}
+
+.logo img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.createButtons button,.logOutBtn button {
+    padding: 10px 15px;
+    color: #fff;
+    background: #0066b3;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.createButtons button:hover,.logOutBtn button:hover {
+    opacity: .7;
+    transition: .2s;
+}
