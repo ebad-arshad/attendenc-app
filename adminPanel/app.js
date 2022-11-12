@@ -173,8 +173,8 @@ const showAllClassDetails = () => {
     const table_data = document.getElementsByClassName("table-data")[0];
 
     const q = query(collection(db, "classes"));
-    table_data.innerHTML = '';
     onSnapshot(q, (querySnapshot) => {
+        table_data.innerHTML = '';
         querySnapshot.forEach((doc) => {
             table_data.innerHTML += `
             <tr>
@@ -195,8 +195,8 @@ const showAllStudentDetails = () => {
     const table_data = document.getElementsByClassName("table-data")[1];
 
     const q = query(collection(db, "students"));
-    table_data.innerHTML = '';
     onSnapshot(q, (querySnapshot) => {
+        table_data.innerHTML = '';
         querySnapshot.forEach((doc) => {
             table_data.innerHTML += `
             <tr>
